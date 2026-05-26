@@ -6,3 +6,4 @@ matplotlib
 tqdm
 scikit-learn
 gdown
+python-3.11.9

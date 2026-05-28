@@ -1,5 +1,6 @@
 import os
 import download_model
+
 from flask import (
     Flask,
     render_template,
@@ -50,9 +51,15 @@ def index():
 
     if request.method == "POST":
 
+        if "image" not in request.files:
+            return render_template(
+                "index.html",
+                metrics=metrics
+            )
+
         file = request.files["image"]
 
-        if file:
+        if file and file.filename != "":
 
             upload_path = os.path.join(
                 UPLOAD_FOLDER,
@@ -84,7 +91,12 @@ def index():
 
 if __name__ == "__main__":
 
+    port = int(
+        os.environ.get("PORT", 5000)
+    )
+
     app.run(
-    host="0.0.0.0",
-    port=5000
-)
+        host="0.0.0.0",
+        port=port,
+        debug=False
+    )

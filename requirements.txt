@@ -1,8 +1,11 @@
 flask
 gunicorn
-torch
-torchvision
-opencv-python
+
+torch==2.2.2+cpu
+torchvision==0.17.2+cpu
+--extra-index-url https://download.pytorch.org/whl/cpu
+
+opencv-python-headless
 numpy
 matplotlib
 tqdm
